@@ -17,7 +17,8 @@
 
 <!-- Icons -->
 <link rel="stylesheet" href="{{ .Site.BaseURL }}css/leaflet.extra-markers.min.css">
-<script src="{{ .Site.BaseURL }}js/leaflet.extra-markers.min.js"></script>
+{{ $leafletExtra := resources.Get "js/leaflet.extra-markers.min.js" }}
+<script src="{{ $leafletExtra.Permalink }}"></script>
 
 <style>
     .fa-icon-marker {
