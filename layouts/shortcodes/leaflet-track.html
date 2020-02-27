@@ -1,0 +1,30 @@
+{{ if .IsNamedParams }}
+
+{{ $trackPath := default "" (.Get "trackPath") }}
+{{ $lineColor := default "#006EFF" (.Get "lineColor") }}
+{{ $lineWeight := default "3" (.Get "lineWeight") }}
+{{ $lineOpacity := default "1" (.Get "lineOpacity") }}
+
+    {{ with .Parent }}
+
+        {{ $mapLat := default "" (.Get "mapLat") }}
+        {{ $mapLon := default "" (.Get "mapLon") }}
+        {{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
+        {{ $trackId := md5 (printf "%s%s" $mapId $trackPath)}}
+
+        <script>
+            drawTrack({{$mapId}}, {{$trackId}}, '{{ "gpx" | absURL }}/{{$trackPath}}', {{$lineColor}}, {{$lineOpacity}}, {{$lineWeight}});
+        </script>
+
+        <div class="download-track" onclick="downloadFile('{{ "gpx" | absURL }}/{{ $trackPath }}');"><p class="download-track-link">Download</p></div>
+
+    {{ else }}
+    {{ errorf "Leaflet Hugo Shortcode: impossible using track outside leaflet-map" }}
+    {{ end }}
+
+{{ else }}
+{{ errorf "Leaflet Hugo Shortcode: please provide named Parameters for marker" }}
+{{ end }}
+
+
+

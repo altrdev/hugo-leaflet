@@ -1,0 +1,30 @@
+{{ if .IsNamedParams }}
+
+{{ $mapLat := default "" (.Get "mapLat") }}
+{{ $mapLon := default "" (.Get "mapLon") }}
+{{ $zoom := default "13" (.Get "zoom") }}
+{{ $mapWidth := default "100%" (.Get "mapWidth") }}
+{{ $mapHeight := default "400px" (.Get "mapHeight") }}
+{{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
+{{ $scrollWheelZoom := default "true" (.Get "scrollWheelZoom") }}
+
+<!--Container-->
+<div id='mapid_{{ $mapId }}' class="leaflet-map" style='width: {{ $mapWidth }}; height: {{ $mapHeight}};'></div>
+
+<script>
+    //Create Map
+    leafletMapsObj[{{ $mapId }}] = L.map('mapid_{{ $mapId }}').setView([{{ $mapLat }}, {{ $mapLon }}], {{ $zoom }});
+    {{ if eq $scrollWheelZoom "false" }}
+        leafletMapsObj[{{ $mapId }}].scrollWheelZoom.disable();
+    {{ end }}
+    //Add tiles
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(leafletMapsObj[{{ $mapId }}]);
+
+</script>
+{{.Inner}}
+
+{{ else }}
+{{ errorf "Leaflet Hugo Shortcode: please provide named Parameters" }}
+{{ end }}
