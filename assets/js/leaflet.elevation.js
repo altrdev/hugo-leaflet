@@ -986,7 +986,7 @@ L.Control.Elevation = L.Control.extend({
             if (this._draggingEnabled) this._resetDrag();
             // autotoggle chart data on single click
             if (this._chartEnabled) {
-                this._clearChart();
+                //this._clearChart();
                 this._clearPath();
                 this._chartEnabled = false;
             } else {
