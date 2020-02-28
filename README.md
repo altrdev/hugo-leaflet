@@ -1,4 +1,6 @@
-# Hugo Leaflet
+<p align="center">
+  <a href="others/images/leaflet.png"><img src="others/images/leaflet.png" width="440" /></a>
+</p>
 
 Started from [simonfrey/hugo-leaflet](https://github.com/simonfrey/hugo-leaflet)
 
