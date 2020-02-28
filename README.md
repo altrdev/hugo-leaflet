@@ -52,15 +52,15 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
 
 #### Parameters `leaflet-map`
 
-|    **Parameter**    |                                       **Description**                                       | **Mandatory** | **Default**            |        **Example**      |
-|:-------------------:|:-------------------------------------------------------------------------------------------:|:-------------:|:----------------------:|:-----------------------:|
-| mapHeight           | Map height size                                                                             |     **no**    |         "400px"        |        `"200px"`        |
-| mapWidth            | Map width size                                                                              |     **no**    |         "100%"         |    `"50px" or "50%"`    |
-| mapLat              | Latitude where to center the map                                                            |    **yes**    |           ""           |      `"27.66995"`       |
-| mapLon              | Longitude where to center the map                                                           |    **yes**    |           ""           |      `"85.43249"`       |
-| mapId               | Unique id. Useful for add multiple map in the post with same longitude and latitude         |     **no**    |   md5(mapLat,mapLon)   |     `"myLocation"`      |
-| zoom                | The zoom level. If set, it must be parsable as int.                                         |     **no**    |          "13"          |          `"7"`          |
-| scrollWheelZoom     | Enable or disable zoom with mouse scroll wheel                                              |     **no**    |         "true"         |   `"true" or "false"`   |
+|    **Parameter**    | **Description**                                                                             | **Mandatory** | **Default**            | **Possible values**        |
+|:-------------------:|:-------------------------------------------------------------------------------------------:|:-------------:|:----------------------:|:--------------------------:|
+| mapHeight           | Map height size                                                                             | **no**        | "400px"                | any number in px           |
+| mapWidth            | Map width size                                                                              | **no**        | "100%"                 | any number in px or %      |
+| mapLat              | Latitude where to center the map                                                            | **yes**       | ""                     | any valid coords number    |
+| mapLon              | Longitude where to center the map                                                           | **yes**       | ""                     | any valid coords number    |
+| mapId               | Unique id. Useful for add multiple map in the post with same longitude and latitude         | **no**        | md5(mapLat,mapLon)     | any string                 |
+| zoom                | The zoom level. If set, it must be parsable as int.                                         | **no**        | "13"                   | any number                 |
+| scrollWheelZoom     | Enable or disable zoom with mouse scroll wheel                                              | **no**        | "true"                 | `"true"` or `"false"`      |
 
 
 ### Map with one marker
@@ -74,7 +74,12 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
 
 #### Parameters `leaflet-marker`
 
-Coming soon ...
+| **Parameter**       | **Description**                         | **Mandatory** | **Default**       | **Possible values**      |
+|:-------------------:|:---------------------------------------:|:-------------:|:-----------------:|:------------------------:|
+| markerLat           | Latitude where to place the marker      | **yes**       | ""                | any number in px         |
+| markerLon           | Longitude where to place the marker     | **yes**       | ""                | any number in px or %    |
+| markerContent       | Popup content text                      | **no**        | ""                | any text, html accepted  |
+
 
 ### Map with multiple marker
 
@@ -88,7 +93,7 @@ Coming soon ...
 {{< /leaflet-map >}}
 ```
 
-### Map with gpx track
+### Map with GPX track
 
 #### Shortcut
 ```
@@ -99,7 +104,32 @@ Coming soon ...
 
 #### Parameters `leaflet-track`
 
-Coming soon ...
+| **Parameter**           | **Description**                                                               | **Mandatory** | **Default**                         | **Possible values**                                                                                                                                                           |
+|:-----------------------:|:-----------------------------------------------------------------------------:|:-------------:|:-----------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| trackPath               | Your GPX file. You must place in `static/gpx` folder.                         |     **yes**   | ""                                  | any filename like `"my_track.gpx"`                                                                                                                                            |
+| lineColor               | Line track color                                                              |     **no**    | "#006EFF"                           | any valid hex color                                                                                                                                                           |
+| lineWeight              | Line track weight on the map                                                  |     **no**    | "3"                                 | any number                                                                                                                                                                    |
+| lineOpacity             | Line track opacity on the map                                                 |     **no**    | "1"                                 | decimal range from 0 to 1                                                                                                                                                     |
+| graphPosition           | Elevation graph position on the map. Not valid if you use `graphDetached`     |     **no**    | "topright"                          | `"myLocation"`                                                                                                                                                                |
+| graphTheme              | Elevation graph theme already present                                         |     **no**    | "steelblue-theme"                   | `"steelblue-theme"`, `"lime-theme"` or `"purple-theme"`                                                                                                                       |
+| graphWidth              | Elevation graph width. Not valid if you use `graphDetached`                   |     **no**    | "500"                               | any number                                                                                                                                                                    |
+| graphHeight             | Elevation graph height                                                        |     **no**    | "150"                               | any number                                                                                                                                                                    |
+| graphFollowMarker       | Auto zoom on the mouse movement over the map                                  |     **no**    | false                               | `true` or `false`                                                                                                                                                             |
+| graphCollapsed          | Hide elevation graph below the button                                         |     **no**    | false                               | `true` or `false`                                                                                                                                                             |
+| graphDetached           | Detach elevation graph outside map                                            |     **no**    | true                                | `true` or `false`                                                                                                                                                             |
+| markerIcon              | Waypoint Fontawesome icon name                                                |     **no**    | "fa-thumb-tack"                     | `"fa-thumb-tack"` (see fontawesome documentation)                                                                                                                             |
+| markerIconColor         | Waypoint icon color                                                           |     **no**    | "cyan"                              | `"red"`, `"orange-dark"`, `"orange"`, `"yellow"`, `"blue-dark"`, `"cyan"`, `"purple"`, `"violet"`, `"pink"`, `"green-dark"`, `"green"`, `"green-light"`, `"black"`, `"white"` |
+| markerIconShape         | Waypoint icon shape                                                           |     **no**    | "penta"                             | `"circle"`, `square`, `penta` or `star`                                                                                                                                       |
+| markerIconClasses       | Extra classes for extends icon css                                            |     **no**    | "fa-icon-marker"                    | `"my-class my-second-class"`                                                                                                                                                  |
+| markerStartIcon         | Start Waypoint Fontawesome icon name                                          |     **no**    | "fa-play"                           | `"fa-play"` (see fontawesome documentation)                                                                                                                                   |
+| markerStartIconColor    | Start Waypoint icon color                                                     |     **no**    | "green-light"                       | `"red"`, `"orange-dark"`, `"orange"`, `"yellow"`, `"blue-dark"`, `"cyan"`, `"purple"`, `"violet"`, `"pink"`, `"green-dark"`, `"green"`, `"green-light"`, `"black"`, `"white"` |
+| markerStartIconShape    | Start Waypoint icon shape                                                     |     **no**    | "circle"                            | `"circle"`, `square`, `penta` or `star`                                                                                                                                       |
+| markerStartIconClasses  | Extra classes for extends start icon css                                      |     **no**    | "fa-icon-marker fa-icon-start-stop" | `"my-class my-second-class"`                                                                                                                                                  |
+| markerEndIcon           | End Waypoint Fontawesome icon name                                            |     **no**    | "fa-flag-checkered"                 | `"fa-flag-checkered"` (see fontawesome documentation)                                                                                                                         |
+| markerEndIconColor      | End Waypoint icon color                                                       |     **no**    | "red"                               | `"red"`, `"orange-dark"`, `"orange"`, `"yellow"`, `"blue-dark"`, `"cyan"`, `"purple"`, `"violet"`, `"pink"`, `"green-dark"`, `"green"`, `"green-light"`, `"black"`, `"white"` |
+| markerEndIconShape      | End Waypoint icon shape                                                       |     **no**    | "circle"                            | `"circle"`, `square`, `penta` or `star`                                                                                                                                       |
+| markerEndIconClasses    | Extra classes for extends end icon css                                        |     **no**    | "fa-icon-marker fa-icon-start-stop" | `"my-class my-second-class"`                                                                                                                                                  |
+
 
 ## License
 <p>
