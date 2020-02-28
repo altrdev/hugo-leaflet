@@ -5,22 +5,74 @@
 {{ $lineWeight := default "3" (.Get "lineWeight") }}
 {{ $lineOpacity := default "1" (.Get "lineOpacity") }}
 
-    {{ with .Parent }}
+{{ $graphPosition := default "topright" (.Get "graphPosition") }}
+{{ $graphTheme := default "steelblue-theme" (.Get "graphTheme") }}
+{{ $graphWidth := default "500" (.Get "graphWidth") }}
+{{ $graphHeight := default "150" (.Get "graphHeight") }}
+{{ $graphFollowMarker := default false (.Get "graphFollowMarker") }}
+{{ $graphCollapsed := default false (.Get "graphCollapsed") }}
+{{ $graphDetached := default true (.Get "graphDetached") }}
 
-        {{ $mapLat := default "" (.Get "mapLat") }}
-        {{ $mapLon := default "" (.Get "mapLon") }}
-        {{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
-        {{ $trackId := md5 (printf "%s%s" $mapId $trackPath)}}
+{{ $markerIcon := default "fa-thumb-tack" (.Get "markerIcon") }}
+{{ $markerIconColor := default "cyan" (.Get "markerIconColor") }}
+{{ $markerIconShape := default "penta" (.Get "markerIconShape") }}
+{{ $markerIconClasses := default "fa-icon-marker" (.Get "markerIconClasses") }}
+{{ $markerStartIcon := default "fa-play" (.Get "markerStartIcon") }}
+{{ $markerStartIconColor := default "green-light" (.Get "markerStartIconColor") }}
+{{ $markerStartIconShape := default "circle" (.Get "markerStartIconShape") }}
+{{ $markerStartIconClasses := default "fa-icon-marker fa-icon-start-stop" (.Get "markerStartIconClasses") }}
+{{ $markerEndIcon := default "fa-flag-checkered" (.Get "markerEndIcon") }}
+{{ $markerEndIconColor := default "red" (.Get "markerEndIconColor") }}
+{{ $markerEndIconShape := default "circle" (.Get "markerEndIconShape") }}
+{{ $markerEndIconClasses := default "fa-icon-marker fa-icon-start-stop" (.Get "markerEndIconClasses") }}
 
-        <script>
-            drawTrack({{$mapId}}, {{$trackId}}, '{{ "gpx" | absURL }}/{{$trackPath}}', {{$lineColor}}, {{$lineOpacity}}, {{$lineWeight}});
-        </script>
+{{ with .Parent }}
 
-        <div class="download-track" onclick="downloadFile('{{ "gpx" | absURL }}/{{ $trackPath }}');"><p class="download-track-link">Download</p></div>
+{{ $mapLat := default "" (.Get "mapLat") }}
+{{ $mapLon := default "" (.Get "mapLon") }}
+{{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
+{{ $trackId := md5 (printf "%s%s" $mapId $trackPath)}}
 
-    {{ else }}
-    {{ errorf "Leaflet Hugo Shortcode: impossible using track outside leaflet-map" }}
-    {{ end }}
+<script>
+    trackOpts = {
+        mapId: "{{ $mapId }}",
+        trackId: "{{ $trackId }}",
+        trackPath: '{{ "gpx" | absURL }}/{{$trackPath}}',
+        lineColor: "{{ $lineColor }}",
+        lineWeight: "{{ $lineWeight }}",
+        lineOpacity: "{{ $lineOpacity }}"
+    };
+    elevationOpts = {
+        graphPosition: "{{ $graphPosition }}",
+        graphTheme: "{{ $graphTheme }}",
+        graphWidth: "{{ $graphWidth }}",
+        graphHeight: "{{ $graphHeight }}",
+        graphFollowMarker: {{ $graphFollowMarker }},
+        graphCollapsed: {{ $graphCollapsed }},
+        graphDetached: {{ $graphDetached }}
+    };
+    markerOpts = {
+        icon: "{{ $markerIcon }}",
+        iconColor: "{{ $markerIconColor }}",
+        iconShape: "{{ $markerIconShape }}",
+        iconClasses: "{{ $markerIconClasses }}",
+        iconStart: "{{ $markerStartIcon }}",
+        iconStartColor: "{{ $markerStartIconColor }}",
+        iconStartShape: "{{ $markerStartIconShape }}",
+        iconStartClasses: "{{ $markerStartIconClasses }}",
+        iconEnd: "{{ $markerEndIcon }}",
+        iconEndColor: "{{ $markerEndIconColor }}",
+        iconEndShape: "{{ $markerEndIconShape }}",
+        iconEndClasses: "{{ $markerEndIconClasses }}"
+    };
+    drawTrack(trackOpts, elevationOpts, markerOpts);
+</script>
+
+<div class="download-track" onclick="downloadFile('{{ "gpx" | absURL }}/{{ $trackPath }}');"><p class="download-track-link">Download</p></div>
+
+{{ else }}
+{{ errorf "Leaflet Hugo Shortcode: impossible using track outside leaflet-map" }}
+{{ end }}
 
 {{ else }}
 {{ errorf "Leaflet Hugo Shortcode: please provide named Parameters for marker" }}

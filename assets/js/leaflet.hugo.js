@@ -1,55 +1,55 @@
 let leafletMapsObj = {};
 let leafletMarkersObj = {};
 
-function drawTrack(mapId, trackId, trackPath, lineColor, lineOpacity, lineWeight) {
+function drawTrack(trackOpts, elevationOpts, markerOpts) {
     var opts = {
         elevationControl: {
             options: {
-                position: "topright",
-                theme: "steelblue-theme", //default: lime-theme
-                width: 500,
-                height: 150,
+                position: elevationOpts.graphPosition,
+                theme: elevationOpts.graphTheme,
+                width: elevationOpts.graphWidth,
+                height: elevationOpts.graphHeight,
                 margins: {
                     top: 20,
                     right: 20,
                     bottom: 35,
                     left: 50
                 },
-                followMarker: false,
-                collapsed: true,
-                detached: true,
+                followMarker: elevationOpts.graphFollowMarker,
+                collapsed: elevationOpts.graphCollapsed,
+                detached: elevationOpts.graphDetached,
                 legend: false,
                 summary: false,
                 downloadLink: '',
                 gpxOptions: {
                     polyline_options: {
-                        className: 'track-'+trackId+'-',
-                        color: lineColor,
-                        opacity: lineOpacity,
-                        weight: lineWeight,
+                        className: 'track-' + trackOpts.trackId + '-',
+                        color: trackOpts.lineColor,
+                        opacity: trackOpts.lineOpacity,
+                        weight: trackOpts.lineWeight,
                     },
                     marker_options: {
                         startIcon: new L.ExtraMarkers.icon({
-                            icon: 'fa-play',
-                            markerColor: 'green-light',
-                            shape: 'circle',
+                            icon: markerOpts.iconStart,
+                            markerColor: markerOpts.iconStartColor,
+                            shape: markerOpts.iconStartShape,
                             prefix: 'fa',
-                            extraClasses: "fa-icon-marker fa-icon-start-stop"
+                            extraClasses: markerOpts.iconStartClasses
                         }),
                         endIcon: new L.ExtraMarkers.icon({
-                            icon: 'fa-flag-checkered',
-                            markerColor: 'red',
-                            shape: 'circle',
+                            icon: markerOpts.iconEnd,
+                            markerColor: markerOpts.iconEndColor,
+                            shape: markerOpts.iconEndShape,
                             prefix: 'fa',
-                            extraClasses: "fa-icon-marker fa-icon-start-stop"
+                            extraClasses: markerOpts.iconEndClasses
                         }),
                         wptIcons: {
                             '': new L.ExtraMarkers.icon({
-                                icon: 'fa-thumb-tack',
-                                markerColor: 'cyan',
-                                shape: 'penta',
+                                icon: markerOpts.icon,
+                                markerColor: markerOpts.iconColor,
+                                shape: markerOpts.iconShape,
                                 prefix: 'fa',
-                                extraClasses: "fa-icon-marker"
+                                extraClasses:  markerOpts.iconClasses,
                             })
                         }
                     }
@@ -59,7 +59,7 @@ function drawTrack(mapId, trackId, trackPath, lineColor, lineOpacity, lineWeight
         },
     };
 
-    L.control.elevation(opts.elevationControl.options).addTo(leafletMapsObj[mapId]).load(trackPath);
+    L.control.elevation(opts.elevationControl.options).addTo(leafletMapsObj[trackOpts.mapId]).load(trackOpts.trackPath);
 
     /*map.on('eledata_loaded', function(e) {
         track = e.track_info;
