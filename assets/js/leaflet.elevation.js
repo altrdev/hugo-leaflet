@@ -701,7 +701,7 @@ L.Control.Elevation = L.Control.extend({
             )
             .append("text")
             .attr("x", -30)
-            .attr("y", 3)
+            .attr("y", -5)
             .text(this._yLabel);
     },
 
@@ -1224,7 +1224,7 @@ L.Control.Elevation = L.Control.extend({
             L.DomEvent.on(container, 'click', L.DomEvent.stopPropagation);
         }
 
-        L.DomEvent.on(container, 'mousewheel', this._mousewheelHandler, this);
+        //L.DomEvent.on(container, 'mousewheel', this._mousewheelHandler, this);
 
         if (!this.options.detached) {
             var iconCssClass = "elevation-toggle " + this.options.controlButton.iconCssClass + (this.options.autohide ? "" : " close-button");

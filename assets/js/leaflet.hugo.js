@@ -7,17 +7,17 @@ function drawTrack(mapId, trackId, trackPath, lineColor, lineOpacity, lineWeight
             options: {
                 position: "topright",
                 theme: "steelblue-theme", //default: lime-theme
-                width: 350,
+                width: 500,
                 height: 150,
                 margins: {
-                    top: 10,
+                    top: 20,
                     right: 20,
-                    bottom: 30,
+                    bottom: 35,
                     left: 50
                 },
                 followMarker: false,
-                collapsed: false,
-                detached: false,
+                collapsed: true,
+                detached: true,
                 legend: false,
                 summary: false,
                 downloadLink: '',
