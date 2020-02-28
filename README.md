@@ -51,14 +51,14 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
 #### Parameters `leaflet-map`
 
 |    **Parameter**    |                                       **Description**                                       | **Mandatory** | **Default**            |        **Example**      |
-|:-------------------:|:-------------------------------------------------------------------------------------------:|:-------------:|------------------------|:-----------------------:|
-| mapHeight           | Map height size                                                                             |       no      |         "400px"        |        `"200px"`        |
-| mapWidth            | Map width size                                                                              |       no      |         "100%"         |    `"50px" or "50%"`    |
-| mapLat              | Latitude where to center the map                                                            |      yes      |           ""           |      `"27.66995"`       |
-| mapLon              | Longitude where to center the map                                                           |      yes      |           ""           |      `"85.43249"`       |
-| mapId               | Unique id. Useful for add multiple map in the post with same longitude and latitude         |       no      |   md5(mapLat,mapLon)   |     `"myLocation"`      |
-| zoom                | The zoom level. If set, it must be parsable as int.                                         |       no      |          "13"          |          `"7"`          |
-| scrollWheelZoom     | Enable or disable zoom with mouse scroll wheel                                              |       no      |         "true"         |   `"true" or "false"`   |
+|:-------------------:|:-------------------------------------------------------------------------------------------:|:-------------:|:----------------------:|:-----------------------:|
+| mapHeight           | Map height size                                                                             |     **no**    |         "400px"        |        `"200px"`        |
+| mapWidth            | Map width size                                                                              |     **no**    |         "100%"         |    `"50px" or "50%"`    |
+| mapLat              | Latitude where to center the map                                                            |    **yes**    |           ""           |      `"27.66995"`       |
+| mapLon              | Longitude where to center the map                                                           |    **yes**    |           ""           |      `"85.43249"`       |
+| mapId               | Unique id. Useful for add multiple map in the post with same longitude and latitude         |     **no**    |   md5(mapLat,mapLon)   |     `"myLocation"`      |
+| zoom                | The zoom level. If set, it must be parsable as int.                                         |     **no**    |          "13"          |          `"7"`          |
+| scrollWheelZoom     | Enable or disable zoom with mouse scroll wheel                                              |     **no**    |         "true"         |   `"true" or "false"`   |
 
 
 ### Map with one marker
