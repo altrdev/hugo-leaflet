@@ -4,6 +4,8 @@
 
 Shortcodes for inserting a OSM (Open Street Maps) Map, Marker or Track into your posts by using leaflet.
 
+I use [Leaflet](https://github.com/Leaflet/Leaflet), a custom version of [Leaflet Elevation](https://github.com/Raruto/leaflet-elevation) and [Leaflet ExtraMarkers](https://github.com/coryasilva/Leaflet.ExtraMarkers)
+
 Initially based on the work of [Simon Frey](https://github.com/simonfrey/hugo-leaflet)
 
 ## Table of Contents
