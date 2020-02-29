@@ -2,9 +2,9 @@
   <a href="others/images/leaflet.png"><img src="others/images/leaflet.png" width="440" /></a>
 </p>
 
-Started from [simonfrey/hugo-leaflet](https://github.com/simonfrey/hugo-leaflet)
-
 Shortcodes for inserting a OSM (Open Street Maps) Map, Marker or Track into your posts by using leaflet.
+
+Initially based on the work of [Simon Frey](https://github.com/simonfrey/hugo-leaflet)
 
 ## Table of Contents
 
