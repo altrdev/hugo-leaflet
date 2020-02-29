@@ -9,6 +9,7 @@ Shortcodes for inserting a OSM (Open Street Maps) Map, Marker or Track into your
 ## Table of Contents
 
 - [Table of Contents](#table-of-contents)
+- [Prerequisite](#prerequisite)
 - [Installation](#installation)
 - [Usage](#usage)
     - [Map only](#map-only)
@@ -23,6 +24,9 @@ Shortcodes for inserting a OSM (Open Street Maps) Map, Marker or Track into your
         - [Shortcut](#shortcut-3)
         - [Parameters `leaflet-track`](#parameters-leaflet-track)
 - [License](#license)
+
+## Prerequisite
+Make sure you already have Font Awesome icons in your project
 
 ## Installation
 
