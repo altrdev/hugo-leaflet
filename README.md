@@ -68,6 +68,8 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
 | **zoom**            | The zoom level. If set, it must be parsable as int.                                         | **no**        | "13"                   | any number                 |
 | **scrollWheelZoom** | Enable or disable zoom with mouse scroll wheel                                              | **no**        | "true"                 | `"true"` or `"false"`      |
 
+#### Result
+![Map Example](others/images/example-map.png)
 
 ### Map with one marker
 
@@ -86,6 +88,8 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
 | **markerLon**       | Longitude where to place the marker     | **yes**       | ""                | any number in px or %    |
 | **markerContent**   | Popup content text                      | **no**        | ""                | any text, html accepted  |
 
+#### Result
+![Map Example](others/images/example-marker.png)
 
 ### Map with multiple marker
 
@@ -98,6 +102,9 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
     {{< leaflet-marker markerLat="27.66995" markerLon="85.43345" >}}
 {{< /leaflet-map >}}
 ```
+
+#### Result
+![Map Example](others/images/example-multi-marker.png)
 
 ### Map with GPX track
 
@@ -135,6 +142,14 @@ I recommend add it globally in your `<head>` and use a parameter to include or e
 | **markerEndIconColor**      | End Waypoint icon color                                                       |     **no**    | "red"                               | `"red"`, `"orange-dark"`, `"orange"`, `"yellow"`, `"blue-dark"`, `"cyan"`, `"purple"`, `"violet"`, `"pink"`, `"green-dark"`, `"green"`, `"green-light"`, `"black"`, `"white"` |
 | **markerEndIconShape**      | End Waypoint icon shape                                                       |     **no**    | "circle"                            | `"circle"`, `square`, `penta` or `star`                                                                                                                                       |
 | **markerEndIconClasses**    | Extra classes for extends end icon css                                        |     **no**    | "fa-icon-marker fa-icon-start-stop" | `"my-class my-second-class"`                                                                                                                                                  |
+
+#### Result
+![Map Example](others/images/example-track.png)
+
+With `graphDetached=false`
+
+![Map Example Detached](others/images/example-track-graphDetached.png)
+
 
 ## License
 <p>
