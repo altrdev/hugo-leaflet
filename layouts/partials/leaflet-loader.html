@@ -7,7 +7,7 @@
         crossorigin=""></script>
 
 <!-- leaflet-elevation -->
-<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@latest/leaflet-elevation.css" />
+<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@1.1.1/dist/leaflet-elevation.css" />
 {{ $leafletElevation := resources.Get "js/leaflet.elevation.js" | minify | fingerprint "md5" }}
 <script src="{{ $leafletElevation.Permalink }}"></script>
 
