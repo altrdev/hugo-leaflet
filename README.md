@@ -42,7 +42,7 @@ Make sure you already have Font Awesome icons in your project
 I recommend add it globally in your `<head>` and use a parameter to include or exclude like this:
 
 ```
-{{ if .Params.maps }}
+{{ if .HasShortcode "leaflet-map" }}
     {{ partial "leaflet-loader" . }}
 {{ end }}
 ```
