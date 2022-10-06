@@ -119,7 +119,7 @@ function createMap(mapnode) {
     //    leafletMapsObj[{{ $mapId }}].scrollWheelZoom.disable();
     //{{ end }}
     //Add tiles
-    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMapsObj[mapId]);
 };
@@ -130,7 +130,6 @@ function createMarker(markernode) {
 	markerLon=markernode.getAttribute("markerLon")
 	mapId=markernode.getAttribute("mapId")
 	//Marker
-	console.log(markerLat)
 	leafletMarkersObj[markerId] = L.marker([markerLat, markerLon]).addTo(leafletMapsObj[mapId]);
 	/*{{ if $markerContent }}
 		leafletMarkersObj[{{ $markerId }}].bindPopup("{{ $markerContent }}").openPopup();
