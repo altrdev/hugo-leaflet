@@ -5,11 +5,12 @@
 {{ $zoom := default "13" (.Get "zoom") }}
 {{ $mapWidth := default "100%" (.Get "mapWidth") }}
 {{ $mapHeight := default "400px" (.Get "mapHeight") }}
+{{ $mapMargin := default "0px" (.Get "mapMargin") }}
 {{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
 {{ $scrollWheelZoom := default "true" (.Get "scrollWheelZoom") }}
 
 <!--Container-->
-<div id='mapid_{{ $mapId }}' class="leaflet-map" style='width: {{ $mapWidth }}; height: {{ $mapHeight}};' mapLat="{{ $mapLat}}" mapLon="{{ $mapLon }}" zoom="{{ $zoom }}" scrollWheelZoom="{{ $scrollWheelZoom }}" mapId="{{ $mapId }}"></div>
+<div id='mapid_{{ $mapId }}' class="leaflet-map" style='width: {{ $mapWidth }}; height: {{ $mapHeight}}; margin: {{ $mapMargin }};' mapLat="{{ $mapLat}}" mapLon="{{ $mapLon }}" zoom="{{ $zoom }}" scrollWheelZoom="{{ $scrollWheelZoom }}" mapId="{{ $mapId }}"></div>
 
 {{.Inner}}
 
