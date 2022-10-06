@@ -106,3 +106,40 @@ window.downloadFile = function (sUrl) {
 
 window.downloadFile.isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
 window.downloadFile.isSafari = navigator.userAgent.toLowerCase().indexOf('safari') > -1;
+
+function createMap(mapnode) {
+    mapId=mapnode.getAttribute("mapId")
+    mapLat=mapnode.getAttribute("mapLat")
+    mapLon=mapnode.getAttribute("mapLon")
+    zoom=mapnode.getAttribute("Zoom")
+
+    //Create Map
+    leafletMapsObj[mapId] = L.map("mapid_" + mapId).setView([mapLat, mapLon], zoom);
+    //{{ if eq $scrollWheelZoom "false" }}
+    //    leafletMapsObj[{{ $mapId }}].scrollWheelZoom.disable();
+    //{{ end }}
+    //Add tiles
+    L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(leafletMapsObj[mapId]);
+};
+
+function createMarker(markernode) {
+	markerId=markernode.getAttribute("markerId")
+	markerLat=markernode.getAttribute("markerLat")
+	markerLon=markernode.getAttribute("markerLon")
+	mapId=markernode.getAttribute("mapId")
+	//Marker
+	console.log(markerLat)
+	leafletMarkersObj[markerId] = L.marker([markerLat, markerLon]).addTo(leafletMapsObj[mapId]);
+	/*{{ if $markerContent }}
+		leafletMarkersObj[{{ $markerId }}].bindPopup("{{ $markerContent }}").openPopup();
+	    {{ end }}*/
+};
+
+window.onload = function(){
+	maps=document.getElementsByClassName("leaflet-map")
+	Array.from(maps).forEach(createMap)
+	markers=document.getElementsByClassName("leaflet-marker")
+	Array.from(markers).forEach(createMarker)
+}
