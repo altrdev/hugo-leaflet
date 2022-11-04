@@ -1,24 +1,10 @@
-<!-- Leaflet (JS/CSS) -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-      integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-      crossorigin=""/>
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
-        integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
-        crossorigin=""></script>
+{{ range $.Site.Params.hugoLeaflet.css }}
+    <link rel="stylesheet" href="{{ .href }}" crossorigin="{{ .crossorigin }}" {{ range $key, $value := .params }} {{ $key | safeURL }}="{{ $value }}" {{ end }} />
+{{ end }}
 
-<!-- leaflet-elevation -->
-<link rel="stylesheet" href="https://unpkg.com/@raruto/leaflet-elevation@1.1.1/dist/leaflet-elevation.css" />
-{{ $leafletElevation := resources.Get "js/leaflet.elevation.js" | minify | fingerprint "md5" }}
-<script src="{{ $leafletElevation.Permalink }}"></script>
-
-<!-- leaflet-hugo -->
-{{ $leafletHugo := resources.Get "js/leaflet.hugo.js" | minify | fingerprint "md5" }}
-<script src="{{ $leafletHugo.Permalink }}"></script>
-
-<!-- Icons -->
-<link rel="stylesheet" href="{{ .Site.BaseURL }}css/leaflet.extra-markers.min.css">
-{{ $leafletExtra := resources.Get "js/leaflet.extra-markers.min.js" }}
-<script src="{{ $leafletExtra.Permalink }}"></script>
+{{ range $.Site.Params.hugoLeaflet.js }}
+    <script src="{{ .src }}" crossorigin="{{ .crossorigin }}" {{ range $key, $value := .params }} {{ $key | safeURL }}="{{ $value }}" {{ end }} ></script>
+{{ end }}
 
 <style>
     .fa-icon-marker {
