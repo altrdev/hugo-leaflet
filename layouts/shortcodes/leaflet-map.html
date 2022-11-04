@@ -8,6 +8,8 @@
 {{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
 {{ $scrollWheelZoom := default "true" (.Get "scrollWheelZoom") }}
 
+{{ partial "leaflet-loader.html" . }}
+
 <!--Container-->
 <div id='mapid_{{ $mapId }}' class="leaflet-map" style='width: {{ $mapWidth }}; height: {{ $mapHeight}};'></div>
 
