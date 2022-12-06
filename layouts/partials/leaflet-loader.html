@@ -1,9 +1,9 @@
 {{ range $.Site.Params.hugoLeaflet.css }}
-    <link rel="stylesheet" href="{{ .href }}" crossorigin="{{ .crossorigin }}" {{ range $key, $value := .params }} {{ $key | safeURL }}="{{ $value }}" {{ end }} />
+    <link rel="stylesheet" href="{{ .href | absURL }}" crossorigin="{{ .crossorigin }}" {{ range $key, $value := .params }} {{ $key | safeURL }}="{{ $value }}" {{ end }} />
 {{ end }}
 
 {{ range $.Site.Params.hugoLeaflet.js }}
-    <script src="{{ .src }}" crossorigin="{{ .crossorigin }}" {{ range $key, $value := .params }} {{ $key | safeURL }}="{{ $value }}" {{ end }} ></script>
+    <script src="{{ .src | absURL }}" crossorigin="{{ .crossorigin }}" {{ range $key, $value := .params }} {{ $key | safeURL }}="{{ $value }}" {{ end }} ></script>
 {{ end }}
 
 <style>
