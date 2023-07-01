@@ -241,7 +241,7 @@ L.Control.Elevation = L.Control.extend({
         this._draggingEnabled = !L.Browser.mobile;
         this._chartEnabled = true;
 
-        if (options.imperial) {
+        if (this.options.imperial) {
             this._distanceFactor = this.__mileFactor;
             this._heightFactor = this.__footFactor;
             this._xLabel = "mi";
