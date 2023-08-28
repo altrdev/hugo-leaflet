@@ -11,15 +11,8 @@
         {{ $mapId := default (md5 (printf "%s%s" $mapLat $mapLon)) (.Get "mapId") }}
         {{ $markerId := md5 (printf "%s%s%s" $mapId $markerLat $markerLon)}}
 
-        <script>
-            //Marker
-            leafletMarkersObj[{{ $markerId }}] = L.marker([{{ $markerLat }}, {{ $markerLon }}]).addTo(leafletMapsObj[{{ $mapId }}]);
-
-            {{ if $markerContent }}
-                leafletMarkersObj[{{ $markerId }}].bindPopup("{{ $markerContent }}").openPopup();
-            {{ end }}
-        </script>
-
+	<div class="leaflet-marker" id="marker_{{ $markerId }}" markerId="{{ $markerId }}" mapId="{{ $mapId }}" markerLat="{{ $markerLat }}" markerLon="{{ $markerLon }}"></div>
+    
     {{ else }}
     {{ errorf "Leaflet Hugo Shortcode: impossible using marker outside leaflet-map" }}
     {{ end }}
